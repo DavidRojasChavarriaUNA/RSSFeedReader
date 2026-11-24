@@ -1,0 +1,81 @@
+@page "/"
+@inject SubscriptionApiService Api
+
+<h1>Subscriptions</h1>
+
+<div class="mb-3">
+    <label for="feed-url" class="form-label">Feed URL</label>
+    <input id="feed-url"
+           class="form-control"
+           @bind="feedUrl"
+           @bind:event="oninput"
+           placeholder="https://example.com/feed.xml" />
+</div>
+
+<button class="btn btn-primary" @onclick="AddSubscriptionAsync">Add subscription</button>
+
+@if (!string.IsNullOrEmpty(statusMessage))
+{
+    <p class="mt-3" role="status">@statusMessage</p>
+}
+
+<h2 class="mt-4">Subscription list</h2>
+
+@if (subscriptions.Count == 0)
+{
+    <p>No subscriptions have been added in this session.</p>
+}
+else
+{
+    <ul>
+        @foreach (var subscription in subscriptions)
+        {
+            <li>@subscription.Url</li>
+        }
+    </ul>
+}
+
+@code {
+    private readonly List<Subscription> subscriptions = [];
+    private string feedUrl = string.Empty;
+    private string statusMessage = string.Empty;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadSubscriptionsAsync();
+    }
+
+    private async Task AddSubscriptionAsync()
+    {
+        if (string.IsNullOrWhiteSpace(feedUrl))
+        {
+            statusMessage = "Enter a feed URL.";
+            return;
+        }
+
+        try
+        {
+            await Api.AddSubscriptionAsync(feedUrl);
+            feedUrl = string.Empty;
+            statusMessage = "Subscription added.";
+            await LoadSubscriptionsAsync();
+        }
+        catch (Exception)
+        {
+            statusMessage = "Could not add the subscription.";
+        }
+    }
+
+    private async Task LoadSubscriptionsAsync()
+    {
+        try
+        {
+            subscriptions.Clear();
+            subscriptions.AddRange(await Api.GetSubscriptionsAsync());
+        }
+        catch (Exception)
+        {
+            statusMessage = "Could not load subscriptions.";
+        }
+    }
+}

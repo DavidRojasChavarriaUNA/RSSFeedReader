@@ -15,19 +15,19 @@ independently implementable and testable.
 
 **Purpose**: Create the ASP.NET Core API and Blazor WebAssembly projects.
 
-- [ ] T001 Create the solution and required project directories in repository root
-- [ ] T002 [P] Create the ASP.NET Core Web API project at
+- [X] T001 Create the solution and required project directories in repository root
+- [X] T002 [P] Create the ASP.NET Core Web API project at
   `backend/RSSFeedReader.Api/RSSFeedReader.Api.csproj`
-- [ ] T003 [P] Create the Blazor WebAssembly project at
+- [X] T003 [P] Create the Blazor WebAssembly project at
   `frontend/RSSFeedReader.UI/RSSFeedReader.UI.csproj`
-- [ ] T004 Remove Blazor template demo pages and links from
+- [X] T004 Remove Blazor template demo pages and links from
   `frontend/RSSFeedReader.UI/Pages/` and
   `frontend/RSSFeedReader.UI/Layout/NavMenu.razor`
-- [ ] T005 Configure API launch settings for `http://localhost:5151` in
+- [X] T005 Configure API launch settings for `http://localhost:5151` in
   `backend/RSSFeedReader.Api/Properties/launchSettings.json`
-- [ ] T006 Configure frontend launch settings for `http://localhost:5213` in
+- [X] T006 Configure frontend launch settings for `http://localhost:5213` in
   `frontend/RSSFeedReader.UI/Properties/launchSettings.json`
-- [ ] T007 Configure the frontend API base URL in
+- [X] T007 Configure the frontend API base URL in
   `frontend/RSSFeedReader.UI/wwwroot/appsettings.json`
 
 ---
@@ -38,19 +38,19 @@ independently implementable and testable.
 
 **CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T008 Add the typed subscription API contract types in
+- [X] T008 Add the typed subscription API contract types in
   `backend/RSSFeedReader.Api/Models/SubscriptionModels.cs`
-- [ ] T009 Implement session-local subscription storage for the API in
+- [X] T009 Implement session-local subscription storage for the API in
   `backend/RSSFeedReader.Api/Services/SubscriptionStore.cs`
-- [ ] T010 Configure API routing, CORS for `http://localhost:5213`, and application
+- [X] T010 Configure API routing, CORS for `http://localhost:5213`, and application
   services in `backend/RSSFeedReader.Api/Program.cs`
-- [ ] T011 Configure the frontend HTTP client and application services in
+- [X] T011 Configure the frontend HTTP client and application services in
   `frontend/RSSFeedReader.UI/Program.cs`
-- [ ] T012 Add the frontend subscription request and response types in
+- [X] T012 Add the frontend subscription request and response types in
   `frontend/RSSFeedReader.UI/Models/SubscriptionModels.cs`
-- [ ] T013 Implement the frontend API service in
+- [X] T013 Implement the frontend API service in
   `frontend/RSSFeedReader.UI/Services/SubscriptionApiService.cs`
-- [ ] T014 Add an application route with exactly one root subscription page in
+- [X] T014 Add an application route with exactly one root subscription page in
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
 
 **Checkpoint**: Foundation ready; user story implementation can proceed.
@@ -67,19 +67,19 @@ returns success and the list contains the new entry.
 
 ### Implementation for User Story 1
 
-- [ ] T015 [US1] Implement `POST /subscriptions` according to
+- [X] T015 [US1] Implement `POST /subscriptions` according to
   `contracts/subscriptions-openapi.yaml` in
   `backend/RSSFeedReader.Api/Program.cs`, applying the required trimmed,
   non-empty `Subscription.url` rule from `data-model.md`
-- [ ] T016 [US1] Add an empty or whitespace-only submission check to
+- [X] T016 [US1] Add an empty or whitespace-only submission check to
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
-- [ ] T017 [US1] Add the URL entry field and add action to
+- [X] T017 [US1] Add the URL entry field and add action to
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
-- [ ] T018 [US1] Call the subscription add API from
+- [X] T018 [US1] Call the subscription add API from
   `frontend/RSSFeedReader.UI/Services/SubscriptionApiService.cs`
-- [ ] T019 [US1] Refresh the displayed list immediately after a successful add in
+- [X] T019 [US1] Refresh the displayed list immediately after a successful add in
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
-- [ ] T020 [US1] Display a clear validation message for rejected empty submissions in
+- [X] T020 [US1] Display a clear validation message for rejected empty submissions in
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
 
 **Checkpoint**: User Story 1 can add a URL and update the list independently.
@@ -96,18 +96,18 @@ running session, and verify every entry remains visible.
 
 ### Implementation for User Story 2
 
-- [ ] T021 [US2] Implement `GET /subscriptions` according to
+- [X] T021 [US2] Implement `GET /subscriptions` according to
   `contracts/subscriptions-openapi.yaml` in
   `backend/RSSFeedReader.Api/Program.cs`
-- [ ] T022 [P] [US2] Implement the frontend list-loading operation in
+- [X] T022 [P] [US2] Implement the frontend list-loading operation in
   `frontend/RSSFeedReader.UI/Services/SubscriptionApiService.cs`
-- [ ] T023 [P] [US2] Render the subscription list in
+- [X] T023 [P] [US2] Render the subscription list in
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
-- [ ] T024 [US2] Render an explicit empty state when no subscriptions exist in
+- [X] T024 [US2] Render an explicit empty state when no subscriptions exist in
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
-- [ ] T025 [US2] Load existing subscriptions when the page initializes or revisits in
+- [X] T025 [US2] Load existing subscriptions when the page initializes or revisits in
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
-- [ ] T026 [US2] Display API failure feedback without exposing internal details in
+- [X] T026 [US2] Display API failure feedback without exposing internal details in
   `frontend/RSSFeedReader.UI/Pages/Subscriptions.razor`
 
 **Checkpoint**: User Stories 1 and 2 work together while preserving session-local data.
@@ -118,19 +118,19 @@ running session, and verify every entry remains visible.
 
 **Purpose**: Complete MVP verification and remove demo or implementation artifacts.
 
-- [ ] T027 [P] Verify only the subscription page uses the `/` route in
+- [X] T027 [P] Verify only the subscription page uses the `/` route in
   `frontend/RSSFeedReader.UI/Pages/`
-- [ ] T028 [P] Verify CORS, API base URL, and frontend/backend launch ports across
+- [X] T028 [P] Verify CORS, API base URL, and frontend/backend launch ports across
   `backend/RSSFeedReader.Api/Properties/launchSettings.json`,
   `frontend/RSSFeedReader.UI/Properties/launchSettings.json`, and
   `frontend/RSSFeedReader.UI/wwwroot/appsettings.json`
-- [ ] T029 Run a clean backend build and startup check for
+- [X] T029 Run a clean backend build and startup check for
   `backend/RSSFeedReader.Api/RSSFeedReader.Api.csproj`
-- [ ] T030 Run a clean frontend build and startup check for
+- [X] T030 Run a clean frontend build and startup check for
   `frontend/RSSFeedReader.UI/RSSFeedReader.UI.csproj`
-- [ ] T031 Run the add-and-view validation scenarios from
+- [X] T031 Run the add-and-view validation scenarios from
   `specs/001-mvp-subscriptions/quickstart.md`
-- [ ] T032 Confirm the MVP contains no feed fetching, parsing, persistence, removal,
+- [X] T032 Confirm the MVP contains no feed fetching, parsing, persistence, removal,
   authentication, or background refresh implementation
 
 ---
